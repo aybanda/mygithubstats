@@ -1,5 +1,6 @@
 const axios = require("axios");
 
+<<<<<<< HEAD
 module.exports = async (req, res) => {
   // Enable CORS
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -7,11 +8,18 @@ module.exports = async (req, res) => {
 
   const { username } = req.query;
 
+=======
+export default async function handler(req, res) {
+  const { username } = req.query;
+
+  // Validate username
+>>>>>>> origin/master
   if (!username) {
     return res.status(400).json({ message: "Username is required" });
   }
 
   try {
+<<<<<<< HEAD
     const config = {
       headers: {
         Accept: "application/vnd.github.v3+json",
@@ -20,6 +28,18 @@ module.exports = async (req, res) => {
 
     console.log(`Fetching data for username: ${username}`); // Debug log
 
+=======
+    // Configure axios with GitHub API headers
+    const config = {
+      headers: {
+        Accept: "application/vnd.github.v3+json",
+        // Add auth token if you have one
+        // 'Authorization': `token ${process.env.GITHUB_TOKEN}`
+      },
+    };
+
+    // Make parallel requests for better performance
+>>>>>>> origin/master
     const [userResponse, reposResponse] = await Promise.all([
       axios.get(`https://api.github.com/users/${username}`, config),
       axios.get(`https://api.github.com/users/${username}/repos`, config),
@@ -40,6 +60,7 @@ module.exports = async (req, res) => {
       })),
     };
 
+<<<<<<< HEAD
     console.log("Successfully fetched stats"); // Debug log
     return res.status(200).json(stats);
   } catch (error) {
@@ -48,6 +69,14 @@ module.exports = async (req, res) => {
     if (error.response) {
       console.error("GitHub API response status:", error.response.status); // Debug log
 
+=======
+    return res.status(200).json(stats);
+  } catch (error) {
+    console.error("Error fetching data from GitHub API:", error);
+
+    // Handle different types of errors
+    if (error.response) {
+>>>>>>> origin/master
       if (error.response.status === 404) {
         return res.status(404).json({ message: "User not found" });
       }
@@ -56,8 +85,14 @@ module.exports = async (req, res) => {
       }
     }
 
+<<<<<<< HEAD
     return res
       .status(500)
       .json({ message: "Error fetching data from GitHub API" });
   }
 };
+=======
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
+>>>>>>> origin/master

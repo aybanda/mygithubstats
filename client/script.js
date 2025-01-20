@@ -1,5 +1,6 @@
 document.getElementById("fetchStats").addEventListener("click", async () => {
   const username = document.getElementById("username").value;
+<<<<<<< HEAD
   const statsDiv = document.getElementById("stats");
   statsDiv.innerHTML = "Loading..."; // Add loading indicator
 
@@ -27,6 +28,15 @@ document.getElementById("fetchStats").addEventListener("click", async () => {
   } catch (error) {
     console.error("Fetch error:", error);
     statsDiv.innerHTML = "Error fetching user data";
+=======
+  const response = await fetch(`/api/stats?username=${username}`);
+
+  if (response.ok) {
+    const stats = await response.json();
+    displayStats(stats);
+  } else {
+    document.getElementById("stats").innerHTML = "User not found";
+>>>>>>> origin/master
   }
 });
 
