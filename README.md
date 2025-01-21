@@ -2,7 +2,7 @@
 
 A web application that displays GitHub user statistics using the GitHub API. View any GitHub user's profile information, repositories, and statistics in a clean interface.
 
-## 🔴 Live Demo
+##  Live Demo
 
 [View Live Demo](https://mygithubstats-qagiqtx64-aybandas-projects.vercel.app/)
 
@@ -77,13 +77,13 @@ The application uses the GitHub REST API v3 to fetch:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Author
+##  Author
 
 **Aybanda**
 
 - GitHub: [@aybanda](https://github.com/aybanda)
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - GitHub API for providing the data
 - Vercel for hosting
